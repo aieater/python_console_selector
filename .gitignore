@@ -1,104 +1,61 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
 build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+xcuserdata/
+project.xcworkspace/
+node_modules/
+_records_/
+__pycache__/
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+brain/
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+# Source
+*.o
+*.d
+*.dylib
+*.gz
+*.pyc
+*.pkl
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
 *.log
-local_settings.py
-db.sqlite3
+*.local
 
-# Flask stuff:
-instance/
-.webassets-cache
+# Thumbnails
+._*
 
-# Scrapy stuff:
-.scrapy
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
 
-# Sphinx documentation
-docs/_build/
+### Linux ###
+.*
+!.gitignore
+*~
 
-# PyBuilder
-target/
+### Ruby ###
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
 
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
+# Python
+dist/
+build/
+*.egg-info/
