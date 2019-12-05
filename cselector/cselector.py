@@ -274,12 +274,12 @@ def multi_selector(options,title="Select items.",min_count=1,split=10,all=None,p
                     try:
                         import aimage
                         if preview:
-                            if preview[current] is not None:
+                            if preview[page*list_max+current] is not None:
                                 for i in range(100): print("\b")
                                 if aimage.isnotebook(): import IPython; IPython.display.clear_output()
                                 else: print("\b\033[0;0f",end="")
                                 print("Previewing...\b")
-                                aimage.show(preview[current],preview_console)
+                                aimage.show(preview[page*list_max+current],preview_console)
                                 aimage.clear_output()
                     except:
                         pass

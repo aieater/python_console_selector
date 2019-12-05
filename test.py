@@ -1,3 +1,18 @@
+import aimage
+import glob
+import os
+from cselector import multi_selector
+options = []
+preview = []
+for f in glob.glob(os.path.expanduser("~/cg/*.jpg")):
+    preview += [aimage.load(f)]
+    options += [os.path.basename(f)]
+print(options)
+selected_array = multi_selector(options=options,title="Title hogehoge",preview=preview,preview_console=True)
+print(selected_array) # [(<Index>,<Option>),(<Index>,<Option>),(<Index>,<Option>)....]
+
+exit(0)
+
 
 from cselector import selector
 
@@ -44,16 +59,3 @@ print(selected_array) # [(<Index>,<Option>),(<Index>,<Option>),(<Index>,<Option>
 from cselector import yes_or_no
 ret = yes_or_no(question="Do you do machine learning?",default="y")
 print(ret) # True/False
-
-import aimage
-import glob
-import os
-from cselector import multi_selector
-options = []
-preview = []
-for f in glob.glob(os.path.expanduser("~/cg/*.jpg")):
-    preview += [aimage.load(f)]
-    options += [os.path.basename(f)]
-print(options)
-selected_array = multi_selector(options=options,title="Title hogehoge",preview=preview,preview_console=True)
-print(selected_array) # [(<Index>,<Option>),(<Index>,<Option>),(<Index>,<Option>)....]
