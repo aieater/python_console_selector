@@ -213,9 +213,9 @@ print(ret) # True/False
 
 |  OS  | Support  |
 | ---- | ---- |
-|  Unix  | ✓  |
-|  Linux  | ✓  |
-|  MacOSX  | ✓  |
+|  Unix  | X  |
+|  Linux  | X  |
+|  MacOSX  | X  |
 |  Windows  |   |
 
 #### Supported Python Version
@@ -223,11 +223,11 @@ print(ret) # True/False
 |  Version  | Support  |
 | ---- | ---- |
 |  Python2.7  |   |
-|  Python3.4  | ✓ |
-|  Python3.5  | ✓ |
-|  Python3.6  | ✓ |
-|  Python3.7  | ✓ |
-|  Python3.8  | ✓ |
+|  Python3.4  | X |
+|  Python3.5  | X |
+|  Python3.6  | X |
+|  Python3.7  | X |
+|  Python3.8  | X |
 
 
 <br>
