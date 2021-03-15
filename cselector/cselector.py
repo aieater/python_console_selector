@@ -128,7 +128,7 @@ def selector(options, title="Select an item."):
             pass
 
 
-def multi_selector(options, title="Select items.", min_count=1, split=10, option_values=None, all=None, preview=None, padding=True, preview_console=False):
+def multi_selector(options, title="Select items.", min_count=1, split=10, option_values=None, all=None, radio_button=False, preview=None, padding=True, preview_console=False):
     def pre(): print("\033[2A", flush=True)
     import sys
     import time
@@ -148,6 +148,9 @@ def multi_selector(options, title="Select items.", min_count=1, split=10, option
     options2d = [[]]
     multi_selected = []
     if all is not None:
+        if radio_button:
+            raise "all and radio button cannot be mixed."
+
         options = [all] + options
 
         if option_values:
@@ -165,6 +168,14 @@ def multi_selector(options, title="Select items.", min_count=1, split=10, option
             options2d.append([])
         options2d[-1].append(o)
     if option_values:
+        t = 0
+        for o in option_values:
+            if o == 0:
+                pass
+            else:
+                t += 1
+        if radio_button and t > 1:
+            raise "The initial value of the radio button should be 0 or 1."
         for o in option_values:
             multi_selected.append(o)
     else:
@@ -287,10 +298,15 @@ def multi_selector(options, title="Select items.", min_count=1, split=10, option
                                 multi_selected[i] = 0
                             # multi_selected[0] = 0
                     else:
-                        if multi_selected[page * list_max + current] == 0:
+                        if radio_button:
+                            for i in range(len(multi_selected)):
+                                multi_selected[i] = 0
                             multi_selected[page * list_max + current] = 1
                         else:
-                            multi_selected[page * list_max + current] = 0
+                            if multi_selected[page * list_max + current] == 0:
+                                multi_selected[page * list_max + current] = 1
+                            else:
+                                multi_selected[page * list_max + current] = 0
                     for o in range(list_max + 2): pre()
                     _update_display_(current)
                 elif n == 0x40:  # @
