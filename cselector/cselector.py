@@ -125,7 +125,7 @@ def selector(options, title="Select an item."):
                 elif n == 0x0a:  # Enter
                     return (current, options[current])
         except (KeyboardInterrupt, EOFError):
-            pass
+            return (None, None)
 
 
 def multi_selector(options, title="Select items.", min_count=1, split=10, option_values=None, all=None, radio_button=False, preview=None, padding=True, preview_console=False):
