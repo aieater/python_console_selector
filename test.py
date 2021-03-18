@@ -25,7 +25,7 @@ from cselector import multi_selector
 
 from cselector import selector
 
-i,o = selector(options=["ItemA", "ItemB", "ItemC"], title="Title hoge hoge.")
+i,o = selector(options=["ItemA", "ItemB", "ItemC"], title="Title hoge hoge.", default_index=2)
 print(i,o)  # (<Index>,<Option>)
 
 import signal

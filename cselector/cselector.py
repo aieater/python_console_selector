@@ -63,7 +63,7 @@ def yes_or_no(question, default="yes"):
             print("Please respond with 'yes' or 'no' (or 'y' or 'n').")
 
 
-def selector(options, title="Select an item."):
+def selector(options, title="Select an item.", default_index=None):
     if len(options) == 0: return None
     if len(options) == 1: return (0, options[0])
     def pre(): print("\033[2A", flush=True)
@@ -82,7 +82,7 @@ def selector(options, title="Select an item."):
             yield
         finally:
             termios.tcsetattr(file.fileno(), termios.TCSADRAIN, old_attrs)
-    current = 0
+    current = 0 if default_index is None else default_index
 
     def dd(i):
         print(" ", title.ljust(20), flush=True, end='\n')
