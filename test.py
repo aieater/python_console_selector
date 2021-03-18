@@ -23,12 +23,14 @@ from cselector import multi_selector
 # exit(0)
 
 
-from cselector import selector
+# from cselector import selector
 
-i,o = selector(options=["ItemA", "ItemB", "ItemC"], title="Title hoge hoge.", default_index=2)
-print(i,o)  # (<Index>,<Option>)
+# i,o = selector(options=["ItemA", "ItemB", "ItemC"], title="Title hoge hoge.", default_index=2)
+# print(i,o)  # (<Index>,<Option>)
+# i,o = selector(options=["ItemA", "ItemB", "ItemC"], title="Title hoge hoge.", default_index=2)
+# print(i,o)  # (<Index>,<Option>)
 
-import signal
+# import signal
 
 # def signal_handler(sig, frame):
 #     import cselector
@@ -40,6 +42,15 @@ import signal
 
 # signal.signal(signal.SIGINT, signal_handler)
 
+
+
+
+from cselector import yes_or_no
+
+# ret = yes_or_no(question="Are you sure?", default="y")
+# print(ret)  # True/False
+ret = yes_or_no(question="Are you sure?", default=None)
+print(ret)  # True/False
 
 exit(0)
 
@@ -79,9 +90,3 @@ for x in range(47):
     options.append("Item" + str(x))
 selected_array = multi_selector(options=options, title="Title hogehoge", split=20)
 print(selected_array)  # [(<Index>,<Option>),(<Index>,<Option>),(<Index>,<Option>)....]
-
-
-from cselector import yes_or_no
-
-ret = yes_or_no(question="Do you do machine learning?", default="y")
-print(ret)  # True/False

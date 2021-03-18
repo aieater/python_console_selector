@@ -4,6 +4,8 @@ import os
 import sys
 import unicodedata
 
+def to_bool(s): return s in [1,'True','TRUE','true','1','yes','Yes','YES','Y','y']
+
 
 def get_char_width(c):
     data = unicodedata.east_asian_width(c)
@@ -34,34 +36,35 @@ def yes_or_no(question, default="yes"):
     valid_table = {"yes": True, "y": True, "no": False, "n": False, "1": True, "0": False}
     if default is None:
         prompt = " [y/n] "
-    elif default in valid_table:
-        if valid_table[default]: prompt = " (default: yes)[Y/n] > "
-        else: prompt = " (default: no)[y/N] > "
     else:
-        raise ValueError("invalid default answer: '%s'" % default)
+        if to_bool(default): prompt = " (default: yes)[Y/n] > "
+        else: prompt = " (default: no)[y/N] > "
+
 
     while True:
         print("\033[0;36m" + question + prompt, end="")
-        choice = input().lower()
-        if default is not None and choice == '':
-            if valid_table[default]:
-                print("\033[2A")
-                print("%s\033[0;32mYes\033[0m" % (question + prompt,), flush=True)
+        try:
+            choice = input().lower()
+            if default is not None and choice == '':
+                if to_bool(default):
+                    print("\033[2A")
+                    print("%s\033[0;32mYes\033[0m" % (question + prompt,), flush=True)
+                else:
+                    print("\033[2A")
+                    print("%s\033[0;31mNo\033[0m" % (question + prompt,), flush=True)
+                return to_bool(default)
+            elif choice in valid_table:
+                if to_bool(choice):
+                    print("\033[2A")
+                    print("%s\033[0;32mYes\033[0m" % (question + prompt,), flush=True)
+                else:
+                    print("\033[2A")
+                    print("%s\033[0;31mNo\033[0m" % (question + prompt,), flush=True)
+                return to_bool(choice)
             else:
-                print("\033[2A")
-                print("%s\033[0;31mNo\033[0m" % (question + prompt,), flush=True)
-            return valid_table[default]
-        elif choice in valid_table:
-            if valid_table[choice]:
-                print("\033[2A")
-                print("%s\033[0;32mYes\033[0m" % (question + prompt,), flush=True)
-            else:
-                print("\033[2A")
-                print("%s\033[0;31mNo\033[0m" % (question + prompt,), flush=True)
-            return valid_table[choice]
-        else:
-            print("Please respond with 'yes' or 'no' (or 'y' or 'n').")
-
+                print("Please respond with 'yes' or 'no' (or 'y' or 'n').")
+        except (KeyboardInterrupt, EOFError):
+            return None
 
 def selector(options, title="Select an item.", default_index=None):
     if len(options) == 0: return None
