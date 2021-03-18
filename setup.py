@@ -3,7 +3,7 @@ import sys, os
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-version = "0.4.1"
+version = "0.4.2"
 
 install_requires = []
 

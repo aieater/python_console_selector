@@ -65,7 +65,7 @@ def yes_or_no(question, default="yes"):
                 print("Please respond with 'yes' or 'no' (or 'y' or 'n').")
         except (KeyboardInterrupt, EOFError):
             print("Abort")
-            exit(9)
+            sys.exit(9)
 
 def selector(options, title="Select an item.", default_index=None):
     if len(options) == 0: return None
@@ -130,7 +130,7 @@ def selector(options, title="Select an item.", default_index=None):
                     return (current, options[current])
         except (KeyboardInterrupt, EOFError):
             print("Abort")
-            exit(9)
+            sys.exit(9)
 
 
 def multi_selector(options, title="Select items.", min_count=1, split=10, option_values=None, all=None, radio_button=False, preview=None, padding=True, preview_console=False):
@@ -329,4 +329,4 @@ def multi_selector(options, title="Select items.", min_count=1, split=10, option
                         pass
         except (KeyboardInterrupt, EOFError):
             print("Abort")
-            exit(9)
+            sys.exit(9)
