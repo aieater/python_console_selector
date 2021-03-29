@@ -106,26 +106,46 @@ def selector(options, title="Select an item.", default_index=None):
                     n = ord(sys.stdin.read(1))
                     if n == 0x5b:
                         n = ord(sys.stdin.read(1))
-                        if n == 0x41:
+                        if n == 0x41 or n == ord('k'):
                             # top
                             current -= 1
                             current = max(current, 0)
                             current = min(current, len(options) - 1)
                             for o in range(len(options) + 1): pre()
                             dd(current)
-                        elif n == 0x42:
+                        elif n == 0x42 or n == ord('j'):
                             # bottom
                             current += 1
                             current = max(current, 0)
                             current = min(current, len(options) - 1)
                             for o in range(len(options) + 1): pre()
                             dd(current)
-                        elif n == 0x43:
+                        elif n == 0x43 or n == ord('l'):
                             pass
                             # right
-                        elif n == 0x44:
+                        elif n == 0x44 or n == ord('h'):
                             pass
                             # left
+                elif n == 0x41 or n == ord('k'):
+                    # top
+                    current -= 1
+                    current = max(current, 0)
+                    current = min(current, len(options) - 1)
+                    for o in range(len(options) + 1): pre()
+                    dd(current)
+                elif n == 0x42 or n == ord('j'):
+                    # bottom
+                    current += 1
+                    current = max(current, 0)
+                    current = min(current, len(options) - 1)
+                    for o in range(len(options) + 1): pre()
+                    dd(current)
+                elif n == 0x43 or n == ord('l'):
+                    pass
+                    # right
+                elif n == 0x44 or n == ord('h'):
+                    pass
+                    # left
                 elif n == 0x0a:  # Enter
                     return (current, options[current])
         except (KeyboardInterrupt, EOFError):
@@ -330,3 +350,8 @@ def multi_selector(options, title="Select items.", min_count=1, split=10, option
         except (KeyboardInterrupt, EOFError):
             print("Abort")
             sys.exit(9)
+
+
+if __name__ == "__main__":
+    i,c = selector(options=["test","test2"])
+    print(i,c)
